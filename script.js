@@ -152,3 +152,33 @@ document.querySelector(".js-sticker").addEventListener("click", sticker);
 window.onresize = function (event) {
   recize_notes();
 };
+
+// Animasi pembuka saat halaman pertama kali dibuka
+window.addEventListener("load", function () {
+  gsap.fromTo(
+    "#envelop-wrapper",
+    {
+      y: 300,
+      scale: 0.3,
+      opacity: 0,
+      rotation: -20,
+    },
+    {
+      y: 0,
+      scale: 1,
+      rotation: 0,
+      opacity: 1,
+      duration: 2,
+      ease: "elastic.out(1, 0.6)",
+      onComplete: function () {
+        gsap.to("#envelop-wrapper", {
+          rotation: 2,
+          duration: 0.1,
+          repeat: 5,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+      }
+    }
+  );
+});
